@@ -70,6 +70,7 @@ jobs:
         rm -rf openwrt/package/lean/luci-theme-argon
         git clone https://github.com/Leo-Jo/luci-app-koolproxyR openwrt/package/luci-app-koolproxyR
         git clone https://github.com/Mrbai98/luci-theme-atmaterial openwrt/package/luci-theme-atmaterial
+        git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git openwrt/package/luci-theme-opentomcat
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git openwrt/package/luci-theme-argon
         git clone https://github.com/tty228/luci-app-serverchan openwrt/package/luci-app-serverchan
         svn co https://github.com/jsda/packages2/trunk/ntlf9t/luci-app-advancedsetting openwrt/package/luci-app-advancedsetting
@@ -153,12 +154,16 @@ jobs:
         # LuCI插件选择:
         cat >> .config <<EOF
         CONFIG_PACKAGE_luci-app-adbyby-plus=y
-        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=y
+        CONFIG_PACKAGE_luci-app-ssr-plus=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_v2ray-plugin=y
+        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_dns2socks=y
+        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_simple-obfs=y
+        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_redsocks2=y
         CONFIG_PACKAGE_luci-app-unblockmusic=y
         CONFIG_PACKAGE_luci-app-mwan3helper=y
         CONFIG_PACKAGE_luci-app-flowoffload=y
@@ -177,6 +182,7 @@ jobs:
         cat >> .config <<EOF
         CONFIG_PACKAGE_luci-theme-atmaterial=y
         CONFIG_PACKAGE_luci-theme-argon=y 
+        CONFIG_PACKAGE_luci-theme-opentomcat=y
         EOF
         
         # 常用软件包:
