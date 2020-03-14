@@ -10,9 +10,7 @@
 # CONFIG_PACKAGE_luci-app-v2ray-server is not set
 # git clone https://github.com/brvphoenix/wrtbwmon openwrt/package/wrtbwmon
 # git clone https://github.com/brvphoenix/luci-app-wrtbwmon openwrt/package/luci-app-wrtbwmon
-#         CONFIG_KERNEL_BUILD_USER="Tyri"
-#         CONFIG_GRUB_TIMEOUT="0"
- #        CONFIG_GRUB_TITLE="OpenWrt AutoBuild By Tyri"
+# git clone https://github.com/Leo-Jo/luci-app-koolproxyR openwrt/package/luci-app-koolproxyR
 #=================================================
 
 name: 编译OpenWrt-X86
@@ -68,7 +66,6 @@ jobs:
     - name: 自定义插件
       run: |
         rm -rf openwrt/package/lean/luci-theme-argon
-        git clone https://github.com/Leo-Jo/luci-app-koolproxyR openwrt/package/luci-app-koolproxyR
         git clone https://github.com/Mrbai98/luci-theme-atmaterial openwrt/package/luci-theme-atmaterial
         git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git openwrt/package/luci-theme-opentomcat
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git openwrt/package/luci-theme-argon
@@ -169,7 +166,6 @@ jobs:
         CONFIG_PACKAGE_luci-app-flowoffload=y
         CONFIG_PACKAGE_luci-app-syncdial=y
         CONFIG_PACKAGE_luci-app-ttyd=y
-        CONFIG_PACKAGE_luci-app-koolproxyR=y
         CONFIG_PACKAGE_luci-app-webadmin=y
         CONFIG_PACKAGE_luci-app-zerotier=y
         CONFIG_PACKAGE_luci-app-wol=y
