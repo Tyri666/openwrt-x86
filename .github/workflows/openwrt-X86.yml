@@ -156,8 +156,8 @@ jobs:
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
-        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
-        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_trojan=y
+        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_v2ray=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_v2ray-plugin=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_dns2socks=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_simple-obfs=y
