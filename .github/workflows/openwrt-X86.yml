@@ -63,7 +63,7 @@ jobs:
       #uses: P3TERX/debugger-action@master
       #if: env.SSH_ACTIONS == 'true'
       
-    - name: 自定义插件
+    - name: 自定义的插件
       run: |
         rm -rf openwrt/package/lean/luci-theme-argon
         svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus openwrt/package/luci-app-ssr-plus
