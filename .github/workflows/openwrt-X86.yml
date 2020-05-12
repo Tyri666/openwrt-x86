@@ -74,6 +74,7 @@ jobs:
         svn co https://github.com/jsda/packages2/trunk/ntlf9t/luci-app-advancedsetting openwrt/package/luci-app-advancedsetting
         git clone -b lede https://github.com/pymumu/luci-app-smartdns openwrt/package/luci-app-smartdns
         svn co https://github.com/pymumu/smartdns/trunk/package/openwrt openwrt/package/smartdns
+        git clone https://github.com/destan19/OpenAppFilter openwrt/package/luci-app-oaf
       # sed -i '24d' openwrt/package/luci-app-smartdns/Makefile
       # sed -i '23a include $(TOPDIR)/feeds/luci/luci.mk' openwrt/package/luci-app-smartdns/Makefile
       # sed -i 's/+luci-compat +smartdns/+smartdns/g' openwrt/package/luci-app-smartdns/Makefile
@@ -173,6 +174,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-serverchan=y
         CONFIG_PACKAGE_luci-app-advancedsetting=y
         CONFIG_PACKAGE_luci-app-smartdns=y
+        CONFIG_PACKAGE_luci-app-oaf=y
         EOF
         
         # LuCI主题:
