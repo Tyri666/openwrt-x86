@@ -112,7 +112,8 @@ jobs:
 
         # 编译固件配置:
         cat >> .config <<EOF
-        CONFIG_EFI_IMAGES is not set
+        CONFIG_GRUB_EFI_IMAGES is not set
+        # CONFIG_EFI_IMAGES is not set
         # CONFIG_VDI_IMAGES is not set
         # CONFIG_VMDK_IMAGES is not set
         # CONFIG_VHD_IMAGES is not set
