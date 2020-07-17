@@ -228,6 +228,7 @@ jobs:
         # CONFIG_PACKAGE_luci-app-music-remote-center is not set
         # CONFIG_PACKAGE_luci-app-zerotier is not set
         # CONFIG_PACKAGE_luci-app-amule is not set
+        # CONFIG_PACKAGE_luci-app-flowoffload is not set
         EOF
         
         sed -i 's/^[ \t]*//g' ./.config
