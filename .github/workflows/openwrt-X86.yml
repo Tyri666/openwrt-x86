@@ -66,6 +66,7 @@ jobs:
     - name: 自定义的插件
       run: |
         rm -rf openwrt/package/lean/luci-theme-argon
+        rm -rf openwrt/package/lean/luci-theme-bootstrap
         svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus openwrt/package/luci-app-ssr-plus
         git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git openwrt/package/luci-theme-opentomcat
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git openwrt/package/luci-theme-argon
