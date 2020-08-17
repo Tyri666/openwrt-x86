@@ -25,6 +25,11 @@ git clone https://github.com/garypang13/luci-theme-edge package/luci-theme-edge
 git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt package/smartdns
 git clone https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusic package/UnblockNeteaseMusic
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusicGo package/UnblockNeteaseMusicGo
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-unblockmusic package/luci-app-unblockmusic
+
+
 
 # 替换更新passwall和ssrplus+
 rm -rf package/openwrt-packages/luci-app-passwall && svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/openwrt-packages/luci-app-passwall
@@ -102,8 +107,8 @@ EOF
 
 # IPv6支持:
 cat >> .config <<EOF
-CONFIG_PACKAGE_ipv6helper=y
-CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
+# CONFIG_PACKAGE_ipv6helper is not set
+# CONFIG_PACKAGE_dnsmasq_full_dhcpv6 is not set
 EOF
 
 # 多文件系统支持:
@@ -130,8 +135,7 @@ cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-oaf=y #应用过滤
 # CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
 CONFIG_PACKAGE_luci-app-serverchan=y #微信推送
-# CONFIG_PACKAGE_luci-app-eqos=y #IP限速
-CONFIG_PACKAGE_luci-app-smartdns=y #smartdns
+# CONFIG_PACKAGE_luci-app-eqos is not set #IP限速
 EOF
 
 # ShadowsocksR插件:
@@ -179,6 +183,7 @@ EOF
 
 # 常用LuCI插件:
 cat >> .config <<EOF
+CONFIG_PACKAGE_luci-app-smartdns=y 
 CONFIG_PACKAGE_luci-app-unblockmusic=y #网易云解锁
 CONFIG_PACKAGE_luci-app-adbyby-plus=y #adbyby去广告
 CONFIG_PACKAGE_luci-app-webadmin=y #Web管理页面设置
