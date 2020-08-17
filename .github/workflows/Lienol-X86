@@ -5,14 +5,12 @@ on:
 # 定时触发(每天早5点)
   schedule:
     - cron: 30 10 * * 5
-
-# release触发
-  release:
-    types: [published]
-
-# 点赞触发
   watch:
     types: [started]
+
+# release触发
+  # release:
+    # types: [published]
 
 # 编辑触发
 #  push:
