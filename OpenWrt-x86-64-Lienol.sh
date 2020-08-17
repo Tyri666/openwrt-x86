@@ -8,7 +8,7 @@ cd openwrt
 
 # 更新feeds文件
 # sed -i 's#diy1 https://github.com/xiaorouji/openwrt-package#diy1 https://github.com/db-one/Lienol-openwrt-package#g' feeds.conf.default #更换默认包源
-sed -i 's#src-git luci https://github.com/Lienol/openwrt-luci.git;dev-17.01#src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06#g' feeds.conf.default #更换luci版本
+# sed -i 's#src-git luci https://github.com/Lienol/openwrt-luci.git;dev-17.01#src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06#g' feeds.conf.default #更换luci版本
 cat feeds.conf.default
 
 # 更新并安装源
@@ -16,23 +16,28 @@ cat feeds.conf.default
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
 # 添加第三方软件包
+rm -rf package/openwrt-packages/smartdns
+rm -rf package/openwrt-packages/luci-app-smartdns
+rm -rf package/openwrt-packages/luci-theme-edge
 git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
-git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
-git clone https://github.com/garypang13/luci-theme-edge package/luci-theme-edge -b 18.06
+git clone https://github.com/garypang13/luci-theme-edge package/luci-theme-edge
+git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+svn co https://github.com/pymumu/smartdns/trunk/package/openwrt package/smartdns
+git clone https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
 
 # 替换更新passwall和ssrplus+
 rm -rf package/openwrt-packages/luci-app-passwall && svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/openwrt-packages/luci-app-passwall
 rm -rf package/openwrt-packages/luci-app-ssr-plus && svn co https://github.com/fw876/helloworld package/openwrt-packages/helloworld
 
 # 自定义定制选项
-sed -i 's#192.168.1.1#10.0.0.1#g' package/base-files/files/bin/config_generate #定制默认IP
-sed -i 's#max-width:200px#max-width:1000px#g' feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm #修改首页样式
-sed -i 's#max-width:200px#max-width:1000px#g' feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index_x86.htm #修改X86首页样式
-# sed -i 's#option commit_interval 24h#option commit_interval 10m#g' feeds/packages/net/nlbwmon/files/nlbwmon.config #修改流量统计写入为10分钟
+sed -i 's#192.168.1.1#192.168.1.233#g' package/base-files/files/bin/config_generate #定制默认IP
+# sed -i 's#max-width:200px#max-width:1000px#g' feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm #修改首页样式
+# sed -i 's#max-width:200px#max-width:1000px#g' feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index_x86.htm #修改X86首页样式
+sed -i 's#option commit_interval 24h#option commit_interval 10m#g' feeds/packages/net/nlbwmon/files/nlbwmon.config #修改流量统计写入为10分钟
 # sed -i 's#option database_directory /var/lib/nlbwmon#option database_directory /etc/config/nlbwmon_data#g' feeds/packages/net/nlbwmon/files/nlbwmon.config #修改流量统计数据存放默认位置
-sed -i 's@background-color: #e5effd@background-color: #f8fbfe@g' package/luci-theme-edge/htdocs/luci-static/edge/cascade.css #luci-theme-edge主题颜色微调
-sed -i 's#rgba(223, 56, 18, 0.04)#rgba(223, 56, 18, 0.02)#g' package/luci-theme-edge/htdocs/luci-static/edge/cascade.css #luci-theme-edge主题颜色微调
+# sed -i 's@background-color: #e5effd@background-color: #f8fbfe@g' package/luci-theme-edge/htdocs/luci-static/edge/cascade.css #luci-theme-edge主题颜色微调
+# sed -i 's#rgba(223, 56, 18, 0.04)#rgba(223, 56, 18, 0.02)#g' package/luci-theme-edge/htdocs/luci-static/edge/cascade.css #luci-theme-edge主题颜色微调
 
 # 创建自定义配置文件 - OpenWrt-x86-64
 
@@ -122,19 +127,20 @@ EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-oaf=y #应用过滤
+# CONFIG_PACKAGE_luci-app-oaf=y #应用过滤
 # CONFIG_PACKAGE_luci-app-openclash=y #OpenClash客户端
 CONFIG_PACKAGE_luci-app-serverchan=y #微信推送
-CONFIG_PACKAGE_luci-app-eqos=y #IP限速
+# CONFIG_PACKAGE_luci-app-eqos=y #IP限速
+CONFIG_PACKAGE_luci-app-smartdns=y #smartdns
 EOF
 
 # ShadowsocksR插件:
-cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-ssr-plus=y
-CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
-CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
-CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
-EOF
+# cat >> .config <<EOF
+# CONFIG_PACKAGE_luci-app-ssr-plus=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+# EOF
 
 # Passwall插件:
 cat >> .config <<EOF
@@ -173,19 +179,20 @@ EOF
 
 # 常用LuCI插件:
 cat >> .config <<EOF
+CONFIG_PACKAGE_luci-app-unblockmusic=y #网易云解锁
 CONFIG_PACKAGE_luci-app-adbyby-plus=y #adbyby去广告
 CONFIG_PACKAGE_luci-app-webadmin=y #Web管理页面设置
 CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
 CONFIG_PACKAGE_luci-app-autoreboot=y #定时重启
-CONFIG_PACKAGE_luci-app-frpc=y #Frp内网穿透
+# CONFIG_PACKAGE_luci-app-frpc is not set #Frp内网穿透
 CONFIG_PACKAGE_luci-app-upnp=y #通用即插即用UPnP(端口自动转发)
 CONFIG_DEFAULT_luci-app-vlmcsd=y #KMS激活服务器
 CONFIG_PACKAGE_luci-app-ddns=y #DDNS服务
 CONFIG_PACKAGE_luci-app-wol=y #网络唤醒
-CONFIG_PACKAGE_luci-app-control-mia=y #时间控制
+# CONFIG_PACKAGE_luci-app-control-mia is not set #时间控制
 CONFIG_PACKAGE_luci-app-control-timewol=y #定时唤醒
 CONFIG_PACKAGE_luci-app-control-webrestriction=y #访问限制
-CONFIG_PACKAGE_luci-app-control-weburl=y #网址过滤
+# CONFIG_PACKAGE_luci-app-control-weburl is not set #网址过滤
 CONFIG_PACKAGE_luci-app-nlbwmon=y #宽带流量监控
 CONFIG_PACKAGE_luci-app-wrtbwmon=y #实时流量监测
 CONFIG_PACKAGE_luci-app-sfe=y #高通开源的 Shortcut FE 转发加速引擎
@@ -236,15 +243,15 @@ EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-argon-dark-mod=y
-CONFIG_PACKAGE_luci-theme-argon-light-mod=y
-CONFIG_PACKAGE_luci-theme-bootstrap=y
+CONFIG_PACKAGE_luci-theme-luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-edge=y
 # CONFIG_PACKAGE_luci-theme-bootstrap-mod is not set
 # CONFIG_PACKAGE_luci-theme-darkmatter is not set
 # CONFIG_PACKAGE_luci-theme-freifunk-generic is not set
 # CONFIG_PACKAGE_luci-theme-material is not set
 # CONFIG_PACKAGE_luci-theme-openwrt is not set
+# CONFIG_PACKAGE_luci-theme-argon-light-mod is not set
+# CONFIG_PACKAGE_luci-theme-bootstrap is not set
 EOF
 
 # 常用软件包:
@@ -252,10 +259,23 @@ cat >> .config <<EOF
 CONFIG_PACKAGE_curl=y
 CONFIG_PACKAGE_htop=y
 CONFIG_PACKAGE_nano=y
-# CONFIG_PACKAGE_screen=y
-# CONFIG_PACKAGE_tree=y
-# CONFIG_PACKAGE_vim-fuller=y
+CONFIG_PACKAGE_screen=y
+CONFIG_PACKAGE_tree=y
+CONFIG_PACKAGE_vim-fuller=y
 CONFIG_PACKAGE_wget=y
+CONFIG_PACKAGE_iperf=y
+CONFIG_PACKAGE_iperf3=y
+CONFIG_PACKAGE_tcping=y
+CONFIG_PACKAGE_bind-dig=y
+CONFIG_PACKAGE_pdnsd-alt=y
+CONFIG_PACKAGE_fdisk=y
+CONFIG_PACKAGE_cfdisk=y
+CONFIG_PACKAGE_lsblk=y
+CONFIG_PACKAGE_lrzsz=y
+CONFIG_PACKAGE_unzip=y
+CONFIG_PACKAGE_zip=y
+CONFIG_PACKAGE_tar=y
+CONFIG_PACKAGE_net-tools=y
 CONFIG_PACKAGE_bash=y
 CONFIG_PACKAGE_node=y
 EOF
