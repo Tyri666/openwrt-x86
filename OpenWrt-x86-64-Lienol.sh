@@ -185,8 +185,8 @@ CONFIG_PACKAGE_luci-app-webadmin=y #Web管理页面设置
 CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
 CONFIG_PACKAGE_luci-app-autoreboot=y #定时重启
 # CONFIG_PACKAGE_luci-app-frpc is not set #Frp内网穿透
-CONFIG_PACKAGE_luci-app-upnp=y #通用即插即用UPnP(端口自动转发)
-CONFIG_DEFAULT_luci-app-vlmcsd=y #KMS激活服务器
+# CONFIG_PACKAGE_luci-app-upnp is not set #通用即插即用UPnP(端口自动转发)
+# CONFIG_DEFAULT_luci-app-vlmcsd is not set #KMS激活服务器
 CONFIG_PACKAGE_luci-app-ddns=y #DDNS服务
 CONFIG_PACKAGE_luci-app-wol=y #网络唤醒
 # CONFIG_PACKAGE_luci-app-control-mia is not set #时间控制
@@ -200,7 +200,6 @@ CONFIG_PACKAGE_luci-app-sfe=y #高通开源的 Shortcut FE 转发加速引擎
 # CONFIG_PACKAGE_luci-app-flowoffload is not set #开源 Linux Flow Offload 驱动
 # CONFIG_PACKAGE_luci-app-diskman is not set #磁盘管理磁盘信息
 # CONFIG_PACKAGE_luci-app-adguardhome is not set #ADguardHome去广告服务
-# CONFIG_PACKAGE_luci-app-unblockmusic is not set #解锁网易云灰色歌曲
 # CONFIG_PACKAGE_luci-app-unblockneteasemusic-go is not set #解锁网易云灰色歌曲
 # CONFIG_PACKAGE_luci-app-unblockneteasemusic-mini is not set #解锁网易云灰色歌曲
 # CONFIG_PACKAGE_luci-app-xlnetacc is not set #迅雷快鸟
@@ -243,7 +242,7 @@ EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-luci-theme-argon=y
+CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-edge=y
 # CONFIG_PACKAGE_luci-theme-bootstrap-mod is not set
 # CONFIG_PACKAGE_luci-theme-darkmatter is not set
