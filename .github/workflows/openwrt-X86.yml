@@ -68,10 +68,8 @@ jobs:
         rm -rf openwrt/package/lean/luci-theme-argon
         svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus openwrt/package/luci-app-ssr-plus
         svn co https://github.com/fw876/helloworld/trunk/tcping openwrt/package/tcping
-        git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git openwrt/package/luci-theme-opentomcat
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git openwrt/package/luci-theme-argon
         git clone https://github.com/tty228/luci-app-serverchan openwrt/package/luci-app-serverchan
-        svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-advancedsetting openwrt/package/luci-app-advancedsetting
         git clone -b lede https://github.com/pymumu/luci-app-smartdns openwrt/package/luci-app-smartdns
         svn co https://github.com/pymumu/smartdns/trunk/package/openwrt openwrt/package/smartdns
       #  git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git openwrt/package/luci-theme-edge
@@ -88,6 +86,7 @@ jobs:
       # cp -r openwrt/package/luci-theme-argon lede/package/lean/
       # cp -r /home/runner/work/lede/lede/openwrt/package/luci-app-wrtbwmon /home/runner/work/lede/lede/package/lean/
       # git clone https://github.com/vernesong/OpenClash openwrt/package/tmp
+      # git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git openwrt/package/luci-theme-opentomcat
       
         
     #- name: SSH connection to Actions
@@ -173,7 +172,6 @@ jobs:
         CONFIG_PACKAGE_luci-app-webadmin=y
         CONFIG_PACKAGE_luci-app-wol=y
         CONFIG_PACKAGE_luci-app-serverchan=y
-        CONFIG_PACKAGE_luci-app-advancedsetting=y
         CONFIG_PACKAGE_luci-app-smartdns=y
         CONFIG_PACKAGE_luci-app-filetransfer=y
         EOF
@@ -181,7 +179,6 @@ jobs:
         # LuCI主题:
         cat >> .config <<EOF
         CONFIG_PACKAGE_luci-theme-argon=y 
-        CONFIG_PACKAGE_luci-theme-opentomcat=y
         EOF
         
         # 常用软件包:
