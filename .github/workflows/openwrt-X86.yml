@@ -220,6 +220,7 @@ jobs:
         # CONFIG_PACKAGE_luci-app-accesscontrolr is not set
         # CONFIG_PACKAGE_luci-app-sfe is not set
         # CONFIG_PACKAGE_luci-app-syncdial is not set
+        # CONFIG_PACKAGE_luci-app-ddns is not set 
         EOF
         
         sed -i 's/^[ \t]*//g' ./.config
