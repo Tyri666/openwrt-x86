@@ -223,7 +223,6 @@ jobs:
         # CONFIG_PACKAGE_luci-app-vlmcsd is not set
         # CONFIG_PACKAGE_luci-app-upnp is not set
         # CONFIG_PACKAGE_luci-app-mwan3 is not set
-        # CONFIG_PACKAGE_luci-app-mwan3helper is not set
         # CONFIG_PACKAGE_luci-app-accesscontrolr is not set
         # CONFIG_PACKAGE_luci-app-syncdial is not set
         # CONFIG_PACKAGE_luci-app-ddns is not set 
