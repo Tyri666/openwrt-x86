@@ -1,4 +1,4 @@
-name: 编译OpenWrt-X86
+name: 编译X86
 
 on: 
   #push:
