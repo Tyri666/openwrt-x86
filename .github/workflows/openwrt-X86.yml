@@ -256,8 +256,8 @@ jobs:
         mv .config ./artifact/
         mkdir -p ./ipk/
         find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./ipk/
-        echo "::set-env name=FILENAME::$(echo "OpenWrt-x86-`date -d "+8 hour" +%Y%m%d-%H%M%S`")"
-        
+        echo "FIRMWARE=$(echo "OpenWrt-x86-`date -d "+8 hour" +%Y%m%d-%H%M%S`")" >> $GITHUB_ENV
+      # echo "::set-env name=FILENAME::$(echo "OpenWrt-x86-`date -d "+8 hour" +%Y%m%d-%H%M%S`")"
     - name: 上传IMG固件
       uses: actions/upload-artifact@main
       with:
