@@ -212,7 +212,6 @@ jobs:
         
         # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号)
         cat >> .config <<EOF
-        # CONFIG_GRUB_EFI_IMAGES is not set
         # CONFIG_VMDK_IMAGES is not set
         # CONFIG_GRUB_CONSOLE is not set
         # CONFIG_PACKAGE_luci-app-docker is not set
@@ -264,12 +263,12 @@ jobs:
         cd openwrt
         rm -rf ./artifact/
         mkdir -p ./artifact/
-        find ./bin/targets/ -name "*squashfs-combined.img" | xargs -i mv -f {} ./artifact/
+        find ./bin/targets/ -name "*.img" | xargs -i mv -f {} ./artifact/
         find ./bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./artifact/
         mv .config ./artifact/
         mkdir -p ./ipk/
         find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./ipk/
-        echo "::set-env name=FILENAME::$(echo "OpenWrt-x86-`date -d "+8 hour" +%Y%m%d-%H%M%S`")"
+        echo "FILENAME=$(echo "OpenWrt-x86-`date -d "+8 hour" +%Y%m%d-%H%M%S`")" >> $GITHUB_ENV
         
     - name: 上传IMG固件
       uses: actions/upload-artifact@main
