@@ -5,7 +5,7 @@ on:
     #branches: 
       #- master
    schedule:
-     - cron: 52 11 * * 1
+     - cron: 57 11 * * 1
    watch:
      types: [started]
 
@@ -207,7 +207,7 @@ jobs:
         cd openwrt
         rm -rf ./artifact/
         mkdir -p ./artifact/
-        find ./bin/targets/ -name "*.gz" | xargs -i mv -f {} ./artifact/
+        find ./bin/targets/ -name "*combined*" | xargs -i mv -f {} ./artifact/
         find ./bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./artifact/
         mv .config ./artifact/
         mkdir -p ./ipk/
