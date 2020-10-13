@@ -84,6 +84,13 @@ jobs:
         rm -f ./.config*
         touch ./.config
         
+        # 编译固件配置:
+        cat >> .config <<EOF
+        CONFIG_TARGET_x86=y
+        CONFIG_TARGET_x86_64=y
+        CONFIG_TARGET_x86_64_Generic=y
+        EOF
+        
         # 科学上网ssr-plus
         cat >> .config <<EOF
         CONFIG_PACKAGE_luci-app-passwall=y
