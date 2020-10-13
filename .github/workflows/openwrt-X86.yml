@@ -164,6 +164,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-wol=y
         CONFIG_PACKAGE_luci-app-smartdns=y
         CONFIG_PACKAGE_luci-app-filetransfer=y
+        CONFIG_PACKAGE_luci-app-sfe=y
         EOF
         
         # LuCI主题:
@@ -219,11 +220,9 @@ jobs:
         # CONFIG_PACKAGE_luci-app-amule is not set
         # CONFIG_PACKAGE_luci-app-flowoffload is not set
         # CONFIG_PACKAGE_luci-app-vlmcsd is not set
-        # CONFIG_PACKAGE_luci-app-upnp is not set
         # CONFIG_PACKAGE_luci-app-mwan3 is not set
         # CONFIG_PACKAGE_luci-app-mwan3helper is not set
         # CONFIG_PACKAGE_luci-app-accesscontrolr is not set
-        # CONFIG_PACKAGE_luci-app-sfe is not set
         # CONFIG_PACKAGE_luci-app-syncdial is not set
         # CONFIG_PACKAGE_luci-app-ddns is not set 
         EOF
