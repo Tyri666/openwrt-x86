@@ -1,4 +1,4 @@
-name: 编译OpenWrt-X86P
+name: 编译Passwall
 
 on: 
   #push:
