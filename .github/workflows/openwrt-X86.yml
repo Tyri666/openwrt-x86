@@ -148,7 +148,7 @@ jobs:
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_dns2socks=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_simple-obfs=y
         CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_redsocks2=y
-        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_naiveproxy=y
+        CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_xray=y
         EOF
         
         # LuCI插件
