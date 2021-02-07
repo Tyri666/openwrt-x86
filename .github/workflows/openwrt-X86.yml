@@ -228,6 +228,7 @@ jobs:
         # CONFIG_PACKAGE_luci-app-firewall is not set
         # CONFIG_PACKAGE_luci-app-upnp is not set
         # CONFIG_PACKAGE_luci-app-jd-dailybonus is not set
+        # CONFIG_PACKAGE_luci-app-uugamebooster is not set
         EOF
         
         sed -i 's/^[ \t]*//g' ./.config
